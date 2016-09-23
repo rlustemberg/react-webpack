@@ -11,13 +11,20 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(bodyParser.json())
 
-app.use('/', express.static(path.join(__dirname, 'build')));
+app.use('/', express.static(path.join(__dirname, '../build')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Cache-Control', 'no-cache')
   next()
 })
+
+app.use('/test', (req, res) => {
+  res.status(200).send({
+    message: 'Test succesful'
+  })
+})
+
 
 app.listen(port, () => {
   console.log(`Server started: http://localhost:${port}`)
