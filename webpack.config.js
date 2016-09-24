@@ -12,7 +12,7 @@ module.exports = {
   },
   context: path.join(__dirname, 'src'),
   entry: {
-    app: ['./components/index.jsx'],
+    app: ['./index.jsx'],
     vendor: [
       'material-design-lite/material'
     ]
