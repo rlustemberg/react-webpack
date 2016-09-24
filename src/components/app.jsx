@@ -1,11 +1,8 @@
 import React from 'react'
+import CommentBox from './comment-box'
 
-export default class App extends React.Component{
+export default class App extends React.Component {
     render() {
-        return (
-            <div>
-                Hello World
-            </div>
-        )
+        return (<CommentBox url="/api/comments" pollInterval={2000}/>)
     }
 }

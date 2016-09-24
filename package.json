@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "es6-promise": "^3.3.1",
     "express": "^4.14.0",
+    "isomorphic-fetch": "^2.2.1",
     "material-design-lite": "^1.2.1",
     "material-design-lite-stylus": "^1.0.4",
     "method-override": "^2.3.6",
