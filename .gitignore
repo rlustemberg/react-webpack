@@ -23,6 +23,7 @@ pids
 *.iml
 
 build
+public
 docs
 lib
 test

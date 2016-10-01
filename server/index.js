@@ -4,6 +4,8 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const prod = process.env.NODE_ENV === 'prod'
+
 // Uncomment for MongoDB connection
 // const mongoose = require('mongoose')
 
@@ -20,7 +22,7 @@ const methodOverride = require('method-override')
  * Configure server
  */
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || prod? 3001: 3000
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -28,7 +30,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(methodOverride())
 
-app.use('/', express.static(path.join(__dirname, '../build')));
+app.use('/', express.static(path.join(__dirname, prod? '../public': '../build')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')

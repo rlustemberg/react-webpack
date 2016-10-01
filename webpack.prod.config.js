@@ -15,9 +15,9 @@ module.exports = {
     vendor: ['material-design-lite/material']
   },
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/build/'
+    publicPath: '/public/'
   },
   module: {
     loaders: [
@@ -44,7 +44,6 @@ module.exports = {
       }, {
         copyUnmodified: true
       }
-    ]),
-    new webpack.HotModuleReplacementPlugin()
+    ])
   ]
 }
