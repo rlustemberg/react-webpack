@@ -15,9 +15,9 @@ module.exports = {
     vendor: ['material-design-lite/material']
   },
   output: {
-    path: path.join(__dirname, 'build'),
+    path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/build/'
+    publicPath: '/public/'
   },
   module: {
     loaders: [
@@ -26,7 +26,7 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'stage-2', 'react'],
-          plugins : ['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
+          plugins:['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
         }
       }, {
         test: /\.styl$/,
@@ -45,7 +45,6 @@ module.exports = {
       }, {
         copyUnmodified: true
       }
-    ]),
-    new webpack.HotModuleReplacementPlugin()
+    ])
   ]
 }
