@@ -25,7 +25,8 @@ module.exports = {
         test: /(\.js|.jsx)$/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'stage-2', 'react']
+          presets: ['es2015', 'stage-2', 'react'],
+          plugins:['react-html-attrs', 'transform-class-properties', 'transform-decorators-legacy']
         }
       }, {
         test: /\.styl$/,
