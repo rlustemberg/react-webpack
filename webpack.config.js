@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const stylusLoader = ExtractTextPlugin.extract({fallbackLoader: 'style-loader', loader: 'css-loader!stylus-loader'})
 const nib = require('nib')
@@ -13,7 +14,7 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: {
     app: ['./index.jsx'],
-    vendor: ['material-design-lite/material']
+    vendors: ['material-design-lite/material.min.js']
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -58,6 +59,11 @@ module.exports = {
         }
       }
     }),
+    new CleanWebpackPlugin(['build'], {
+      verbose: true,
+      dry: false
+    }),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'vendors.js'}),
     new webpack.HotModuleReplacementPlugin()
   ]
 }
