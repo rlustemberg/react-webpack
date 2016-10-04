@@ -7,11 +7,6 @@ export default class Layout extends React.Component {
     super()
   }
 
-  handleChangeTitle(e) {
-    let title = e.target.value
-    this.setState({title})
-  }
-
   render() {
     return (
       <div class="mdl-layout__container">
