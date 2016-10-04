@@ -22,17 +22,13 @@ export default class Layout extends React.Component {
               </div>
               <div class="mdl-layout__header-row">
                 <nav class="mdl-navigation react-webpack-navigation">
-                  <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="/">Featured</Link>
-                  <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="archives">Archives</Link>
-                  <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="settings">Settings</Link>
+                  <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="/">Index</Link>
                 </nav>
               </div>
             </div>
             <div class="mdl-layout__drawer">
               <nav class="mdl-navigation">
-                <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="/">Featured</Link>
-                <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="archives">Archives</Link>
-                <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="settings">Settings</Link>
+                <Link class="mdl-navigation__link mdl-typography--text-uppercase" to="/">Index</Link>
               </nav>
             </div>
           <div class="mdl-layout__content">
