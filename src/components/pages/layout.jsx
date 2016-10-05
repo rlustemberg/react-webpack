@@ -2,6 +2,8 @@ import React from 'react'
 import Footer from '../layout/footer'
 import Nav from '../layout/nav'
 
+import Redux from '../redux'
+
 export default class Layout extends React.Component {
   constructor() {
     super()

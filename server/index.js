@@ -22,15 +22,17 @@ const prod = process.env.NODE_ENV === 'prod'
  * Configure server
  */
 const app = express()
-const port = process.env.PORT || prod? 3001: 3000
+const port = process.env.PORT || prod
+  ? 3001
+  : 3000
 
-app.use(bodyParser.urlencoded({
-  extended: false
-}))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 app.use(methodOverride())
 
-app.use('/', express.static(path.join(__dirname, prod? '../public': '../build')));
+app.use('/', express.static(path.join(__dirname, prod
+  ? '../public'
+  : '../build')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -40,12 +42,20 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/test', (req, res) => {
+app.get('/api/users', (req, res) => {
   res.status(200).send({
-    message: 'Test succesful'
+    data: [
+      {
+        name: 'Will',
+        age: 35
+      }
+    ]
   })
 })
 
+app.use('/test', (req, res) => {
+  res.status(200).send({message: 'Test succesful'})
+})
 
 app.listen(port, () => {
   console.log(`Server started: http://localhost:${port}`)
