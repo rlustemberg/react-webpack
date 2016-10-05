@@ -46,8 +46,28 @@ app.get('/api/users', (req, res) => {
   res.status(200).send({
     data: [
       {
+        id: Date.now(),
         name: 'Will',
         age: 35
+      }, {
+        id: Date.now() + 1,
+        name: 'Laura',
+        age: 29
+      }
+    ]
+  })
+})
+
+app.get('/api/tweets', (req, res) => {
+  res.status(200).send({
+    data: [
+      {
+        id: Date.now(),
+        text: 'OMG my firts tweet!'
+      },
+      {
+        id: Date.now() + 1,
+        text: 'My life is the best…no the worts…'
       }
     ]
   })
