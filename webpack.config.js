@@ -14,11 +14,11 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: {
     app: ['./index.jsx'],
-    vendors: ['material-design-lite/material.min.js']
+    vendors: ['jquery/dist/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js']
   },
   output: {
     path: path.join(__dirname, 'build'),
-    filename: '[name].js',
+    filename: 'js/[name].js',
     publicPath: '/build/'
   },
   module: {
@@ -36,20 +36,37 @@ module.exports = {
         test: /\.styl$/,
         loader: stylusLoader
       }, {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loaders: ['file-loader']
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+        loader: 'url?limit=100000&name=[name].[ext]'
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('styles/[name].css'),
     new CopyWebpackPlugin([
       {
         from: 'index.html'
       }, {
+        from: path.join(__dirname, 'node_modules', 'bootstrap-styl', 'fonts'),
+        to: path.join(__dirname, 'src', 'fonts')
+      }, {
+        from: path.join(__dirname, 'node_modules', 'bootstrap-styl', 'fonts'),
+        to: 'fonts'
+      }, {
+        from: path.join(__dirname, 'node_modules', 'font-awesome-stylus', 'fonts'),
+        to: path.join(__dirname, 'src', 'fonts')
+      }, {
+        from: path.join(__dirname, 'node_modules', 'font-awesome-stylus', 'fonts'),
+        to: 'fonts'
+      }, {
         copyUnmodified: true
       }
     ]),
+    new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         stylus: {
@@ -63,7 +80,7 @@ module.exports = {
       verbose: true,
       dry: false
     }),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'vendors.js'}),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'js/vendors.js'}),
     new webpack.HotModuleReplacementPlugin()
   ]
 }

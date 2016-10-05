@@ -7,9 +7,9 @@ export default class Footer extends React.Component {
 
     render() {
         return (
-            <footer class="mdl-mini-footer">
-                <div class="mdl-mini-footer__left-section">
-                    <div class="mdl-logo">Copyright</div>
+            <footer class="footer">
+                <div class="container">
+                    <div class="text-muted">Copyright</div>
                 </div>
             </footer>
         )

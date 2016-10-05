@@ -14,11 +14,11 @@ module.exports = {
   devtool: 'eval-source-map',
   entry: {
     app: ['./index.jsx'],
-    vendors: ['material-design-lite/material.min.js']
+    vendors: ['jquery/dist/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js']
   },
   output: {
     path: path.join(__dirname, 'public'),
-    filename: '[name].js',
+    filename: 'js/[name].js',
     publicPath: '/public/'
   },
   module: {
@@ -36,13 +36,13 @@ module.exports = {
         test: /\.styl$/,
         loader: stylusLoader
       }, {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-        loaders: ['file-loader']
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+        loader: 'url?limit=100000&name=[name].[ext]'
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('styles/[name].css'),
     new CopyWebpackPlugin([
       {
         from: 'index.html'
@@ -50,6 +50,11 @@ module.exports = {
         copyUnmodified: true
       }
     ]),
+    new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        $: 'jquery',
+        jquery: 'jquery'
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         stylus: {
@@ -63,7 +68,7 @@ module.exports = {
       verbose: true,
       dry: false
     }),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'vendors.js'}),
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'js/vendors.js'}),
     new webpack.optimize.UglifyJsPlugin()
   ]
 }

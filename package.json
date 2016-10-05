@@ -5,12 +5,15 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "bootstrap-styl": "^5.0.8",
     "es6-promise": "^3.3.1",
     "express": "^4.14.0",
+    "flux": "^3.0.0",
+    "font-awesome-stylus": "^4.6.2",
     "history": "^4.3.0",
     "isomorphic-fetch": "^2.2.1",
-    "material-design-lite": "^1.2.1",
-    "material-design-lite-stylus": "^1.0.4",
+    "jquery": "^3.1.1",
     "method-override": "^2.3.6",
     "mongoose": "^4.6.1",
     "nodemon": "^1.10.2",
@@ -39,6 +42,7 @@
     "style-loader": "^0.13.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.1",
+    "url-loader": "^0.5.7",
     "webpack": "^2.1.0-beta.25"
   },
   "scripts": {
