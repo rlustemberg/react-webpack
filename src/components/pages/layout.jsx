@@ -15,6 +15,7 @@ export default class Layout extends React.Component {
         <div class="container">
           <div class="row">
             <div className="col-sm-12">
+              <h1>Layout</h1>
               {this.props.children}
             </div>
           </div>

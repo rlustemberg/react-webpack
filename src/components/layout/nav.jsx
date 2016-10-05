@@ -17,10 +17,12 @@ export default class Nav extends React.Component {
   render() {
     const {location} = this.props
     const {collapsed} = this.state
-    const todoClass = location.pathname === "/"? "active": ""
-    const favoritesClass = location.pathname.match('favorites')? "active": ""
-    const settingsClass = location.pathname.match('settings')? "active": ""
-    const navClass = collapsed? "collapse": ""
+    const indexClass = location.pathname === "/"
+      ? "active"
+      : ""
+    const navClass = collapsed
+      ? "collapse"
+      : ""
 
     return (
       <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
@@ -35,15 +37,12 @@ export default class Nav extends React.Component {
           </div>
           <div class={"navbar-collapse " + navClass} id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class={todoClass}>
-                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Todos</IndexLink>
+              <li class={indexClass}>
+                <IndexLink to="/" onClick={this.toggleCollapse.bind(this)}>Index</IndexLink>
               </li>
-              <li class={favoritesClass}>
-                <Link to="favorites" onClick={this.toggleCollapse.bind(this)}>Favorites</Link>
-              </li>
-              <li class={settingsClass}>
-                <Link to="settings" onClick={this.toggleCollapse.bind(this)}>Settings</Link>
-              </li>
+              {/* <li class={nameClass}>
+                <Link to="name" onClick={this.toggleCollapse.bind(this)}>Name</Link>
+              </li> */}
             </ul>
           </div>
         </div>
