@@ -50,11 +50,7 @@ module.exports = {
         copyUnmodified: true
       }
     ]),
-    new webpack.ProvidePlugin({
-        jQuery: 'jquery',
-        $: 'jquery',
-        jquery: 'jquery'
-    }),
+    new webpack.ProvidePlugin({jQuery: 'jquery', $: 'jquery', jquery: 'jquery'}),
     new webpack.LoaderOptionsPlugin({
       options: {
         stylus: {
@@ -68,7 +64,6 @@ module.exports = {
       verbose: true,
       dry: false
     }),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'js/vendors.js'}),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'js/vendors.js'})
   ]
 }
