@@ -36,8 +36,11 @@ module.exports = {
         test: /\.styl$/,
         loader: stylusLoader
       }, {
-        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-        loader: 'url?limit=100000&name=[name].[ext]'
+        test: /\.(svg|png|jpe?g|gif)(\?\S*)?$/,
+        loader: 'url?limit=100000&name=./img/[name].[ext]'
+      }, {
+        test: /\.(eot|woff|woff2|ttf)(\?\S*)?$/,
+        loader: 'url?limit=100000&name=./fonts/[name].[ext]'
       }
     ]
   },
@@ -46,6 +49,21 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: 'index.html'
+      }, {
+        from: path.join(__dirname, 'src', 'img'),
+        to: 'img'
+      }, {
+        from: path.join(__dirname, 'node_modules', 'bootstrap-styl', 'fonts'),
+        to: path.join(__dirname, 'src', 'fonts')
+      }, {
+        from: path.join(__dirname, 'node_modules', 'bootstrap-styl', 'fonts'),
+        to: 'fonts'
+      }, {
+        from: path.join(__dirname, 'node_modules', 'font-awesome-stylus', 'fonts'),
+        to: path.join(__dirname, 'src', 'fonts')
+      }, {
+        from: path.join(__dirname, 'node_modules', 'font-awesome-stylus', 'fonts'),
+        to: 'fonts'
       }, {
         copyUnmodified: true
       }
